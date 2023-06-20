@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8000:8080
+
+  db:
+    image: mysql:5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - /opt/mysql_data:/var/lib/mysql
+    ports:
+    - 3306:3306
