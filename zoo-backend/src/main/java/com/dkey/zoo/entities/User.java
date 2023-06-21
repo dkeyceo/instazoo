@@ -8,12 +8,15 @@ import com.dkey.zoo.entities.enums.ERole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-public class User {
+public class User implements UserDetails {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -42,9 +45,43 @@ public class User {
 
 	@Transient
 	private Collection<? extends GrantedAuthority> authorities;
+
+	public User(){}
+
+	public User(Long id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.authorities = authorities;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdDate = LocalDateTime.now();
 	}
 
+	@Override
+	public String getPassword() {
+		return this.password;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 }
