@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { authInterceptorProviders } from './helpers/auth-interceptor.service';
+import { authErrorInterceptorProvider } from './helpers/error-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +22,7 @@ import { authInterceptorProviders } from './helpers/auth-interceptor.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, authErrorInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
