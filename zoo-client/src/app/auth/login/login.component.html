@@ -1,1 +1,35 @@
-<p>login works!</p>
+
+<div class="login-page">
+    <h2>Login</h2>
+    <form [formGroup]="formGroup">
+        <div>
+            <div class="justify-content-center">
+            <div></div>
+                <mat-form-field appearance="outline">
+                <mat-label>
+                    Email address
+                </mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>
+                    Password
+                </mat-label>
+                <input matInput type="password" formControlName="password">
+            </mat-form-field>
+        </div>
+        
+
+        <div id="controls" class="row">
+            <button style="width: 20%" (click)="submit()" mat-flat-button color="primary" [disabled]="formGroup.invalid">
+                Login
+            </button>
+            <a [routerLink]="['/register']"> Register</a>
+        </div>
+
+        </div>
+    </form>
+</div>
