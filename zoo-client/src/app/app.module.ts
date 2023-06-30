@@ -9,9 +9,13 @@ import { MaterialModule } from './material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { authInterceptorProviders } from './helpers/auth-interceptor.service';
 import { authErrorInterceptorProvider } from './helpers/error-interceptor.service';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
