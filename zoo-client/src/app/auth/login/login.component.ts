@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder) {
     if (this.tokenStorageService.getUser()) {
-      this.router.navigate(['/'])
+      this.router.navigate(['/main'])
     }
   }
 
