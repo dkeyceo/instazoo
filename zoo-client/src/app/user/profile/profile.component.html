@@ -1,0 +1,27 @@
+<div class="user-profile">
+  <h1>
+    Profile
+  </h1>
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" (click)="openEditDialog()">
+      Edit info
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img [src]="previewImgURL || formatImage(userProfileImage) || 'https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png' " alt="user image" class="profile-image">
+      <input type="file" #fileInput (change)="onFileSelected($event)">
+
+      <button mat-button (click)="fileInput.click()">Pick file</button>
+      <button mat-button *ngIf="selectedFile" (click)="onUpload()">Upload</button>
+    </div>
+    <div class="col" style="text-align: left">
+      <h2>{{user.username}}</h2>
+      <h3>{{user.firstname}} {{user.lastname}}</h3>
+      <p>{{user.bio}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <router-outlet></router-outlet>
+  </div>
+</div>
