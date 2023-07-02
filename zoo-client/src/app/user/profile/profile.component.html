@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col">
       <img [src]="previewImgURL || formatImage(userProfileImage) || 'https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png' " alt="user image" class="profile-image">
-      <input type="file" #fileInput (change)="onFileSelected($event)">
+      <input style="display: none" type="file" #fileInput (change)="onFileSelected($event)">
 
       <button mat-button (click)="fileInput.click()">Pick file</button>
       <button mat-button *ngIf="selectedFile" (click)="onUpload()">Upload</button>
